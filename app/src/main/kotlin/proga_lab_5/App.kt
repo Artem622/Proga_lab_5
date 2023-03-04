@@ -11,5 +11,7 @@ class App {
 }
 
 fun main() {
-    println(App().greeting)
+    val operator = Operator()
+
+    operator.start()
 }
