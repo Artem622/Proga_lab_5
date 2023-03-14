@@ -3,15 +3,17 @@
  */
 package proga_lab_5
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello World!"
-        }
-}
+import proga_lab_5.commands.*
 
+class App {}
 fun main() {
     val operator = Operator()
 
+    operator.register(TestCommand(), Exit())
+
     operator.start()
+
+
 }
+
+
