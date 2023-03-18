@@ -1,61 +1,36 @@
 package proga_lab_5
 
-import proga_lab_5.commands.Command
 import java.util.*
 
 class Operator {
 
-    var commandList  : HashMap<String, Command> = HashMap<String, Command> ()
-    var commandDescriptionList   : HashMap<String, String> = HashMap<String, String> ()
+    var sc = Scanner(System.`in`)
 
-    private var scanner = Scanner(System.`in`)
-
-    fun start(){
+    fun process(){
         println("Введите абсолютный путь до файла:")
-        val file = scanner.nextLine()
+        val file = sc.nextLine()
+        println(file)
 
-
-        val command = scanner.nextLine()
-
-        next(command)
+        while (true){
+            val command = sc.nextLine()
+            runCommand(command)
+        }
     }
 
-    fun next(command : String){
-        //Исполнение переданной команды
-        runCommand(command)
-
-        //Считывание новой команды
-        next(scanner.nextLine())
-    }
     private fun runCommand(command: String){
         val commandAndArguments = command.split(" ")
         val name = commandAndArguments[0]
         val arguments = commandAndArguments.drop(1)
 
+        if (commandManager.checkCommand(name)){
 
-        if (commandList[name] == null){
+            commandManager.manage(name, arguments)
+
+        }else{
             println("Такой команды не существует")
         }
-        else if (commandAndArguments.size == 1){
-            commandList[name]!!.comply()
-        }
-        else{
-            for (arg in arguments){
-                try {
-                    commandList[name]!!.setArgument(arg)
-                    commandList[name]!!.comply()
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-        }
     }
 
-    fun register(vararg commands: Command) {
-        for (command in commands) {
-            commandList[command.getName()] = command
-            commandDescriptionList[command.getName()] = command.getDescription()  //Kotlin предлагает так добавлять.
-        }
-    }
+
 
 }

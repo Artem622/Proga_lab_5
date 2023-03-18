@@ -5,13 +5,14 @@ package proga_lab_5
 
 import proga_lab_5.commands.*
 
-class App {}
+
+val operator = Operator()
+val commandManager = CommandManager()
 fun main() {
-    val operator = Operator()
 
-    operator.register(TestCommand(), Exit())
+    commandManager.register(TestCommand(), Exit(), Sum())
 
-    operator.start()
+    operator.process()
 
 
 }

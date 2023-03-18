@@ -1,9 +1,10 @@
 package proga_lab_5.commands
 
+import proga_lab_5.ArgumentsType
 import kotlin.system.exitProcess
 
 class Exit : Command {
-    override fun comply() {
+    override fun comply(variables: HashMap<String, Any?>): Any? {
         print("Приложение завершает работу...")
         exitProcess(0)
     }
@@ -15,5 +16,10 @@ class Exit : Command {
         return "Выход из приложения"
     }
 
-    override fun setArgument(arg: String){}
+    override fun argContract(arguments : List<String>): HashMap<String, Any> {
+        return HashMap()
+    }
+    override fun argsInfo(): ArgumentsType {
+        return ArgumentsType.NO_ARGS
+    }
 }
