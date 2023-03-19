@@ -1,15 +1,20 @@
 package proga_lab_5
 
+import proga_lab_5.printers.OperatorPrinter
 import java.util.*
 
 class Operator {
+    private val operatorPrinter = OperatorPrinter()
 
     var sc = Scanner(System.`in`)
 
     fun process(){
-        println("Введите абсолютный путь до файла:")
+
+        operatorPrinter.print()
+
         val file = sc.nextLine()
-        println(file)
+
+        //Написать код для загрузки данных из файла в коллекцию
 
         while (true){
             val command = sc.nextLine()
@@ -27,7 +32,7 @@ class Operator {
             commandManager.manage(name, arguments)
 
         }else{
-            println("Такой команды не существует")
+            commandManager.noCommandPrinter()
         }
     }
 

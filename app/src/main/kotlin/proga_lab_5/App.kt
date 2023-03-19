@@ -10,7 +10,7 @@ val operator = Operator()
 val commandManager = CommandManager()
 fun main() {
 
-    commandManager.register(TestCommand(), Exit(), Sum())
+    commandManager.register(Exit(), Help())
 
     operator.process()
 
