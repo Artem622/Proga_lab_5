@@ -1,8 +1,8 @@
 package proga_lab_5.commands
 
-import proga_lab_5.ArgumentsType
-
 class ExecuteScript: Command{
+
+    private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         return HashMap()
     }
@@ -12,7 +12,7 @@ class ExecuteScript: Command{
     }
 
     override fun getDescription(): String {
-        return "Исполнение команд из указанного файла."
+        return "Исполнение команд из указанного файла. Можно передать только ОДИН аргумент."
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {
@@ -21,7 +21,7 @@ class ExecuteScript: Command{
         return file
     }
 
-    override fun argsInfo(): ArgumentsType {
-        return ArgumentsType.ONE_ARGUMENT
+    override fun argsInfo(): HashMap<String, Int> {
+        return argsInfo.setLimits(1, 1, 1)
     }
 }

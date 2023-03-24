@@ -1,8 +1,8 @@
 package proga_lab_5.commands
 
-import proga_lab_5.ArgumentsType
 
-class Remove_at_index : Command {
+class RemoveAt : Command {
+    private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         return HashMap()
     }
@@ -12,11 +12,11 @@ class Remove_at_index : Command {
     }
 
     override fun getDescription(): String {
-        return "Удаляет элемент, находящийся в заданной позиции коллекции (index)."
+        return "Удаляет элемент, находящийся в заданной позиции коллекции (index). Количество аргументов не должно превышать количества элементов в коллекции."
     }
 
-    override fun argsInfo(): ArgumentsType {
-        return ArgumentsType.MORE_ARGUMENTS
+    override fun argsInfo(): HashMap<String, Int> {
+        return argsInfo.setLimits(150,1,1)
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {

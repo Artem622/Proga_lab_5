@@ -1,8 +1,9 @@
 package proga_lab_5.commands
 
-import proga_lab_5.ArgumentsType
 
-class Update_by_id : Command {
+
+class UpdateById : Command {
+    private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         return HashMap()
     }
@@ -12,11 +13,13 @@ class Update_by_id : Command {
     }
 
     override fun getDescription(): String {
-        return "Удаляет элемент из коллекции по его id."
+        return "Удаляет элемент из коллекции по его id. Диапазон принимаемых аргументов: от 1 до 12.\n" +
+                "Правила введения аргументов: Первый - id, далее название полей, которые нуждаются в изменении."
+
     }
 
-    override fun argsInfo(): ArgumentsType {
-        return ArgumentsType.MORE_ARGUMENTS
+    override fun argsInfo(): HashMap<String, Int> {
+        return argsInfo.setLimits(12,1,1)
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {

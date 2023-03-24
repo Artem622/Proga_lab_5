@@ -10,7 +10,7 @@ class CommandManager {
     private var commandDescriptionList   : HashMap<String, String> = HashMap()
 
     fun manage(name : String, arguments : List<String>){
-        if (checkArgumentsType(name, arguments)){
+        if (checkArgumentsInfo(name, arguments)){
             val variables = commandList[name]!!.argContract(arguments)
             commandList[name]!!.comply(variables)
         }
@@ -35,18 +35,19 @@ class CommandManager {
     fun noCommandPrinter(){
         return commandManagerPrinter.print()
     }
-    private fun checkArgumentsType(name: String, arguments : List<String>): Boolean {
-        return if (commandList[name]!!.argsInfo() == ArgumentsType.NO_ARGS && arguments.isNotEmpty()){
-            commandManagerPrinter.noArgsError()
-            false
-        }else if (commandList[name]!!.argsInfo() == ArgumentsType.ONE_ARGUMENT && arguments.size != 1){
-            commandManagerPrinter.oneArgError()
-            false
-        }else if (commandList[name]!!.argsInfo() == ArgumentsType.MORE_ARGUMENTS && arguments.isEmpty()){
-            commandManagerPrinter.moreArgsError()
-            false
-        }else{
-            true
+    private fun checkArgumentsInfo(name: String, arguments : List<String>): Boolean {
+        val info = commandList[name]!!.argsInfo()
+        val size = arguments.size
+        if (size > info["max"]!! || size < info["min"]!!){
+            commandManagerPrinter.incorrectQuantity()
+            return false
+        }else if (size < info["max"]!! && size > info["min"]!! && info["between"] == 0) {
+            commandManagerPrinter.incorrectQuantity()
+            return false
+        }else if ((info["max"] == info["min"]) && info["max"] != size){
+            commandManagerPrinter.incorrectQuantity()
+            return false
         }
+        return true
     }
 }

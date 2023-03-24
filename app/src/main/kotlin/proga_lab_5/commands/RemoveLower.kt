@@ -1,8 +1,8 @@
 package proga_lab_5.commands
 
-import proga_lab_5.ArgumentsType
 
-class Remove_lower : Command {
+class RemoveLower : Command {
+    private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         return HashMap()
     }
@@ -12,11 +12,11 @@ class Remove_lower : Command {
     }
 
     override fun getDescription(): String {
-        return "Удаляет из коллекции все элементы, меньшие, чем заданный."
+        return "Удаляет из коллекции все элементы, меньшие, чем заданный. Передается ДВА аргумента: (поле) и (значение)."
     }
 
-    override fun argsInfo(): ArgumentsType {
-        return ArgumentsType.MORE_ARGUMENTS
+    override fun argsInfo(): HashMap<String, Int> {
+        return argsInfo.setLimits(2,2,1)
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {

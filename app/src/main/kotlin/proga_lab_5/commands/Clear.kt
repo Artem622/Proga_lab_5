@@ -1,8 +1,9 @@
 package proga_lab_5.commands
 
-import proga_lab_5.ArgumentsType
 
 class Clear : Command {
+
+    private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         return HashMap()
     }
@@ -15,11 +16,11 @@ class Clear : Command {
         return HashMap()
     }
 
-    override fun argsInfo(): ArgumentsType {
-        return ArgumentsType.NO_ARGS
+    override fun argsInfo(): HashMap<String, Int> {
+        return argsInfo.setLimits(0,0,1)
     }
 
     override fun getDescription(): String {
-        return "Очищение коллекции."
+        return "Очищение коллекции. Передаваемых аргументов НЕТ."
     }
 }

@@ -11,7 +11,7 @@ val commandManager = CommandManager()
 fun main() {
 
     commandManager.register(Exit(), Help(), Info(), Show(), Save(), Sort() ,ExecuteScript(), PrintAscending(), FilterContainsName(), Clear(),
-        Remove_all_by_meters_above_sea_level(), Remove_by_id(), Remove_lower(), Remove_at_index(), Update_by_id(), Add())
+        RemoveAllByMetersAboveSeaLevel(), RemoveById(), RemoveLower(), RemoveAt(), UpdateById(), Add())
 
     operator.process()
 
