@@ -6,7 +6,7 @@ import kotlin.system.exitProcess
 
 class Exit : Command {
     private val printer = ExitPrinter()
-    override fun comply(variables: HashMap<String, Any?>): HashMap<String, Any> {
+    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         printer.print()
         exitProcess(0)
     }

@@ -27,15 +27,18 @@ class Operator {
         val name = commandAndArguments[0]
         val arguments = commandAndArguments.drop(1)
 
-        if (commandManager.checkCommand(name)){
 
-            commandManager.manage(name, arguments)
+        if (commandManager.checkCommand(name)){
+            if (arguments.isNotEmpty() && arguments.last() == ""){
+                val argumentsWithoutLast = arguments.dropLast(1)
+                commandManager.manage(name, argumentsWithoutLast)
+            }else{
+            commandManager.manage(name, arguments)}
 
         }else{
             commandManager.noCommandPrinter()
         }
     }
-
 
 
 }

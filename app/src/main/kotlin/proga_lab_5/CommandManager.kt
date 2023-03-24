@@ -6,23 +6,14 @@ import kotlin.collections.HashMap
 
 class CommandManager {
     private val commandManagerPrinter = CommandManagerPrinter()
-    var commandList  : HashMap<String, Command> = HashMap<String, Command> ()
-    private var commandDescriptionList   : HashMap<String, String> = HashMap<String, String> ()
-    private val emptyMap : HashMap<String, Any?> = HashMap()
+    var commandList  : HashMap<String, Command> = HashMap()
+    private var commandDescriptionList   : HashMap<String, String> = HashMap()
 
     fun manage(name : String, arguments : List<String>){
-
-        if (commandList[name]!!.argsInfo() == ArgumentsType.NO_ARGS){
-            if (arguments.isNotEmpty()){
-                commandManagerPrinter.noArgs()}
-            else{
-            commandList[name]!!.comply(emptyMap)}
-        }
-        else {
-            val variables : HashMap<String, Any?> = HashMap(commandList[name]!!.argContract(arguments))
+        if (checkArgumentsType(name, arguments)){
+            val variables = commandList[name]!!.argContract(arguments)
             commandList[name]!!.comply(variables)
         }
-
     }
 
 
@@ -43,5 +34,19 @@ class CommandManager {
 
     fun noCommandPrinter(){
         return commandManagerPrinter.print()
+    }
+    private fun checkArgumentsType(name: String, arguments : List<String>): Boolean {
+        return if (commandList[name]!!.argsInfo() == ArgumentsType.NO_ARGS && arguments.isNotEmpty()){
+            commandManagerPrinter.noArgsError()
+            false
+        }else if (commandList[name]!!.argsInfo() == ArgumentsType.ONE_ARGUMENT && arguments.size != 1){
+            commandManagerPrinter.oneArgError()
+            false
+        }else if (commandList[name]!!.argsInfo() == ArgumentsType.MORE_ARGUMENTS && arguments.isEmpty()){
+            commandManagerPrinter.moreArgsError()
+            false
+        }else{
+            true
+        }
     }
 }

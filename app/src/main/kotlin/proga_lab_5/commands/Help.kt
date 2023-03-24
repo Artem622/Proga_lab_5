@@ -9,13 +9,12 @@ class Help : Command{
 
     private val printer = HelpPrinter()
 
-    override fun comply(variables: HashMap<String, Any?>): HashMap<String, Any> {
+    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         val commandDescriptionList: HashMap<String, String> = commandManager.getCommandDescriptionList()
         for (command in commandDescriptionList) {
             printer.printArgs(command.key, command.value)
         }
         return HashMap()
-
     }
 
     override fun getDescription(): String {
