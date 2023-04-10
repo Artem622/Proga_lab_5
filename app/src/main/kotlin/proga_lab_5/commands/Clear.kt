@@ -5,7 +5,10 @@ class Clear : Command {
 
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        return HashMap()
+        val result : HashMap<String, Any> = HashMap()
+        result["print message"] = true
+        result["message"] = "Коллекция очищена."
+        return result
     }
 
     override fun getName(): String {

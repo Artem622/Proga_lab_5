@@ -1,13 +1,18 @@
 package proga_lab_5.commands
 
-import proga_lab_5.printers.ExitPrinter
+
+import proga_lab_5.printers.UPrinter
 import kotlin.system.exitProcess
 
+object Message {
+    const val MESSAGE = "Приложение завершает свою работу..."
+}
+
 class Exit : Command {
-    private val printer = ExitPrinter()
+    private val printer = UPrinter()
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        printer.print()
+        printer.print { Message.MESSAGE }
         exitProcess(0)
     }
 

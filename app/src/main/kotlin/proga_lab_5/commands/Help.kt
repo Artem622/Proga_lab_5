@@ -2,19 +2,22 @@ package proga_lab_5.commands
 
 
 import proga_lab_5.commandManager
-import proga_lab_5.printers.HelpPrinter
+import proga_lab_5.printers.UPrinter
 
 
 class Help : Command{
     private val argsInfo = ArgsInfo()
-    private val printer = HelpPrinter()
+    private val printer = UPrinter()
 
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         val commandDescriptionList: HashMap<String, String> = commandManager.getCommandDescriptionList()
         for (command in commandDescriptionList) {
-            printer.printArgs(command.key, command.value)
+            printer.printValues(command.key, command.value)
         }
-        return HashMap()
+        val result : HashMap<String, Any> = HashMap()
+        result["print message"] = false
+        result["message"] = "Команда выполнена успешно."
+        return result
     }
 
     override fun getDescription(): String {

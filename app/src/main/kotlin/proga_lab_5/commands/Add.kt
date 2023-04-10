@@ -6,7 +6,8 @@ class Add : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
         val result : HashMap<String, Any> = HashMap()
-        result["message"] = "Команда успешно выполнена."
+        result["print message"] = true
+        result["message"] = "Команда выполнена успешно."
         return result
     }
 

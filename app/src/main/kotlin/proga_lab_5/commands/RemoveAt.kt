@@ -4,7 +4,10 @@ package proga_lab_5.commands
 class RemoveAt : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        return HashMap()
+        val result : HashMap<String, Any> = HashMap()
+        result["print message"] = true
+        result["message"] = "Команда выполнена успешно."
+        return result
     }
 
     override fun getName(): String {

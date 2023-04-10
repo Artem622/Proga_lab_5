@@ -8,7 +8,10 @@ class RemoveById : Command {
         for (i in 1..numbersOfId.toInt()){
             println(variables[i.toString()])
         }
-        return HashMap()
+        val result : HashMap<String, Any> = HashMap()
+        result["print message"] = true
+        result["message"] = "Команда выполнена успешно."
+        return result
     }
 
     override fun getName(): String {

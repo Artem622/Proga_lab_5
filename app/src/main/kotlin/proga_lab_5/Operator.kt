@@ -1,16 +1,19 @@
 package proga_lab_5
 
-import proga_lab_5.printers.OperatorPrinter
 import java.util.*
 
+object Strings {
+    const val START_STRING = "Введите абсолютный путь до файла:"
+    const val NO_COMMAND = "Такой команды не существует. Узнать о поддерживаемых командах можно через команду help."
+}
+
 class Operator {
-    private val operatorPrinter = OperatorPrinter()
 
     var sc = Scanner(System.`in`)
 
     fun process(){
 
-        operatorPrinter.print()
+        uPrinter.print { Strings.START_STRING }
 
         val file = sc.nextLine()
 
@@ -36,7 +39,7 @@ class Operator {
             commandManager.manage(name, arguments)}
 
         }else{
-            commandManager.noCommandPrinter()
+            uPrinter.print { Strings.NO_COMMAND }
         }
     }
 

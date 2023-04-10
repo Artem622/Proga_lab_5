@@ -1,5 +1,6 @@
 package proga_lab_5.commands
 
+
 class ArgsInfo {
     fun setLimits(max : Int , min : Int, inBetween : Int) : HashMap<String, Int> {
         val argsInfo : HashMap<String, Int> = HashMap()

@@ -4,10 +4,12 @@
 package proga_lab_5
 
 import proga_lab_5.commands.*
+import proga_lab_5.printers.UPrinter
 
 
 val operator = Operator()
 val commandManager = CommandManager()
+val uPrinter = UPrinter()
 fun main() {
 
     commandManager.register(Exit(), Help(), Info(), Show(), Save(), Sort() ,ExecuteScript(), PrintAscending(), FilterContainsName(), Clear(),
