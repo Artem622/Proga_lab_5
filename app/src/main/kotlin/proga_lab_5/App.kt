@@ -7,6 +7,7 @@ import proga_lab_5.city.CityCollection
 import proga_lab_5.commands.*
 import proga_lab_5.printers.UPrinter
 
+
 val collection = CityCollection()
 val operator = Operator()
 val commandManager = CommandManager()
