@@ -3,11 +3,11 @@ package proga_lab_5.commands
 class ExecuteScript: Command{
 
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+
+
+
+        return Result("Команда выполнена", false)
     }
 
     override fun getName(): String {

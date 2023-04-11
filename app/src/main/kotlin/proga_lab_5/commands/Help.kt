@@ -9,15 +9,12 @@ class Help : Command{
     private val argsInfo = ArgsInfo()
     private val printer = UPrinter()
 
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
+    override fun comply(variables: HashMap<String, Any>): Result {
         val commandDescriptionList: HashMap<String, String> = commandManager.getCommandDescriptionList()
         for (command in commandDescriptionList) {
             printer.printValues(command.key, command.value)
         }
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = false
-        result["message"] = "Команда выполнена успешно."
-        return result
+        return Result("Команда успешно выполнена", false)
     }
 
     override fun getDescription(): String {

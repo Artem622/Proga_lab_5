@@ -1,17 +1,16 @@
 package proga_lab_5.commands
 
+import proga_lab_5.commands.Result
+
 
 class RemoveById : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
+    override fun comply(variables: HashMap<String, Any>): Result {
         val numbersOfId = variables["numbers of id"].toString()
         for (i in 1..numbersOfId.toInt()){
             println(variables[i.toString()])
         }
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+        return Result("Все города с указанными id удалены", true)
     }
 
     override fun getName(): String {

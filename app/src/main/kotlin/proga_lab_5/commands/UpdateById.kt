@@ -4,11 +4,8 @@ package proga_lab_5.commands
 
 class UpdateById : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+        return Result("Значение полей города обновлены", true)
     }
 
     override fun getName(): String {

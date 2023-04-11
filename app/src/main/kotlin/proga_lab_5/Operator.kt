@@ -7,9 +7,10 @@ object Strings {
     const val NO_COMMAND = "Такой команды не существует. Узнать о поддерживаемых командах можно через команду help."
 }
 
+var sc = Scanner(System.`in`)
 class Operator {
 
-    var sc = Scanner(System.`in`)
+
 
     fun process(){
 

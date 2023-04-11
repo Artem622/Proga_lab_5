@@ -1,14 +1,19 @@
 package proga_lab_5.commands
 
+import proga_lab_5.collection
+import proga_lab_5.commands.Result
+import proga_lab_5.uPrinter
 
 
 class Info : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = false
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+
+        val collectionInfo = collection.getCollection()
+
+        uPrinter.print { "Дата инициализации: " + collection.getCreationTime().toString() +"; Количество элементов: " +  collectionInfo.size}
+
+        return Result("Команда выполнена успешно.", false)
     }
 
     override fun getName(): String {

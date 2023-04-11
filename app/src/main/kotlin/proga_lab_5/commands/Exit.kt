@@ -11,7 +11,7 @@ object Message {
 class Exit : Command {
     private val printer = UPrinter()
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
+    override fun comply(variables: HashMap<String, Any>): Result {
         printer.print { Message.MESSAGE }
         exitProcess(0)
     }

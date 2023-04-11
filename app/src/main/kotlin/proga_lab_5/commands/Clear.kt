@@ -1,14 +1,22 @@
 package proga_lab_5.commands
 
-
+import proga_lab_5.Strings
+import proga_lab_5.city.City
+import proga_lab_5.city.CityCollection
+import proga_lab_5.collection
+object Keys {
+    const val print = "print message"
+    const val message = "message"
+}
 class Clear : Command {
 
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Коллекция очищена."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+
+        val cityCollection = collection.getCollection()
+        cityCollection.clear()
+
+        return Result("Коллекция очищена", true)
     }
 
     override fun getName(): String {

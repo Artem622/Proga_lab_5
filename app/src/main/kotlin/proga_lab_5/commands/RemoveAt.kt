@@ -1,13 +1,12 @@
 package proga_lab_5.commands
 
+import proga_lab_5.commands.Result
+
 
 class RemoveAt : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+        return Result("Город с указанным индексом удален.", true)
     }
 
     override fun getName(): String {
@@ -19,7 +18,7 @@ class RemoveAt : Command {
     }
 
     override fun argsInfo(): HashMap<String, Int> {
-        return argsInfo.setLimits(150,1,1)
+        return argsInfo.setLimits(1,1,1)
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {

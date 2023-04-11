@@ -1,14 +1,23 @@
 package proga_lab_5.commands
 
+import proga_lab_5.city.CityCollection
+import proga_lab_5.collection
 
 
 class RemoveAllByMetersAboveSeaLevel: Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+
+
+           val iterator = collection.getCollection().iterator()
+           while (iterator.hasNext()) {
+               val iterCity = iterator.next()
+               if (iterCity.getMetersAboveSeaLevel() == variables[Var.meters]) {
+                   iterator.remove()
+               }
+           }
+
+        return Result("Удалены все города, с указанным значением.", true)
     }
 
     override fun getName(): String {
@@ -25,7 +34,7 @@ class RemoveAllByMetersAboveSeaLevel: Command {
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {
         val arg : HashMap<String, Any> = HashMap()
-        arg["meters"] = arguments[0].toLong()
+        arg[Var.meters] = arguments[0].toLong()
         return arg
     }
 }

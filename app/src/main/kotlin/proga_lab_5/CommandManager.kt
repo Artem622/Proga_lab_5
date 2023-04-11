@@ -15,8 +15,8 @@ class CommandManager {
         if (checkArgumentsInfo(name, arguments)){
             val variables = commandList[name]!!.argContract(arguments)
             val result = commandList[name]!!.comply(variables)
-            if (result["print message"] as Boolean){
-                uPrinter.print { result["message"].toString() }
+            if (result.getBool()){
+                uPrinter.print { result.getMessage() }
             }
         }
     }

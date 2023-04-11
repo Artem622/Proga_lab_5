@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 class City {
     private var id: Long? =null
     private var name: String? =null
-    private var coordinates: Coordinates? = Coordinates(0,0L)
+    private var coordinates: Coordinates? = Coordinates(0,0F)
     private var creationDate: LocalDateTime? = LocalDateTime.now()
     private var area: Int? =null
     private var population: Long? =null
@@ -15,22 +15,22 @@ class City {
     private var agglomeration: Double? =null
     private var climate: Climate? =null
     private var government: Government? =null
-    private var governor: Human? = Human("","")
+    private var governor: Human? = Human()
 
     override fun toString(): String {
         val formatted = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         val str = StringBuilder()
-        str.append("id города").append(id)
-        str.append("название города").append(name)
-        str.append("координаты города").append(coordinates.toString())
-        str.append("дата создания").append(creationDate!!.format(formatted))
-        str.append("территория").append(area)
-        str.append("население").append(population)
-        str.append("высота над уровнем моря").append(metersAboveSeaLevel)
-        str.append("агломерация").append(agglomeration)
-        str.append("климат").append(climate)
-        str.append("правительство").append(government)
-        str.append("правитель").append(government.toString()).append("\n")
+        str.append("id города: ").append(id)
+        str.append("; Название города: ").append(name)
+        str.append("; Координаты города: ").append(coordinates.toString())
+        str.append("; Дата создания: ").append(creationDate!!.format(formatted))
+        str.append("; Территория: ").append(area)
+        str.append("; Население: ").append(population)
+        str.append("; Высота над уровнем моря: ").append(metersAboveSeaLevel)
+        str.append("; Агломерация: ").append(agglomeration)
+        str.append("; Климат: ").append(climate)
+        str.append("; Правительство: ").append(government)
+        str.append("; Губернатор: ").append(governor.toString()).append("\n")
         return str.toString()
     }
 
@@ -49,7 +49,7 @@ class City {
     fun getCoordinatesY(): String? {
         return coordinates!!.getY().toString()
     }
-    fun setCoordinatesY(y: Long) {
+    fun setCoordinatesY(y: Float) {
         coordinates!!.setY(y)
     }
 
@@ -109,7 +109,7 @@ class City {
     }
 
     fun getPopulation(): Long?= population
-    fun setPopulation(population: Long){
+    fun setPopulation(population: Long) {
         this.population = population
     }
 

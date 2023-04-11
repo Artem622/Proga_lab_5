@@ -3,11 +3,8 @@ package proga_lab_5.commands
 
 class Save : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Коллекция сохранена."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+        return Result("Коллекция сохранена в файл", true)
     }
 
     override fun getDescription(): String {

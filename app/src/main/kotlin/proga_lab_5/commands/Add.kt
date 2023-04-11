@@ -1,14 +1,52 @@
 package proga_lab_5.commands
 
+import proga_lab_5.city.CityCreator
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+
+object Var{
+    const val name = "name"
+    const val coordinateX = "coordX"
+    const val coordinateY = "coordY"
+    const val area = "area"
+    const val population = "population"
+    const val meters = "metersAboveOfSeaLevel"
+    const val agl = "agglomeration"
+    const val climate = "climate"
+    const val government = "government"
+    const val birthday = "birthday"
+    const val age = "age"
+}
 
 
 class Add : Command {
+    private val shaper = VarsShaper()
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Команда выполнена успешно."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+
+
+        val creator = CityCreator()
+        val name = variables[Var.name].toString()
+        val coordX = variables[Var.coordinateX].toString().toLong()
+        val coordY = variables[Var.coordinateY].toString().toFloat()
+        val area = variables[Var.area].toString().toInt()
+        val population = variables[Var.population].toString().toLong()
+        val meters = variables[Var.meters].toString().toLong()
+        val agl = variables[Var.agl].toString().toDouble()
+        val climate = variables[Var.climate].toString()
+        val government = variables[Var.government].toString()
+
+        val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+        val date: LocalDate = LocalDate.parse(variables[Var.birthday].toString(), formatter)
+        val birt: ZonedDateTime = date.atStartOfDay(ZoneId.systemDefault())
+
+        val birthday = ZonedDateTime.parse(birt.toString())
+        val age = variables[Var.age].toString().toInt()
+        creator.create(name, coordX, coordY, area, population, meters, agl, climate, government, birthday, age)
+
+        return Result("Город добавлен в коллекцию", true)
     }
 
     override fun getName(): String {
@@ -21,10 +59,10 @@ class Add : Command {
     }
 
     override fun argsInfo(): HashMap<String, Int> {
-        return argsInfo.setLimits(11, 1, 0)
+        return argsInfo.setLimits(0, 0, 0)
     }
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {
-        return HashMap()
+        return shaper.shape()
     }
 }

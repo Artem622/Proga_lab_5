@@ -1,30 +1,31 @@
 package proga_lab_5.city
 
 import java.time.ZonedDateTime
-import java.util.Date
 
 class Human {
-    private var age: Int
-    private var birthday: ZonedDateTime
+    private var age: Int? = null
+    private var birthday: ZonedDateTime? = null
 
-    constructor(age:String, birthday: String){
+    constructor()
+    constructor(age: String, birthday: String){
         this.age = age.toInt()
         this.birthday = ZonedDateTime.parse(birthday)
     }
 
+
     fun getAge():
-          Int = age
+            Int? = age
 
     fun setAge(age: Int){
         this.age = age
     }
 
     fun getBirthday():
-            ZonedDateTime= birthday
+            ZonedDateTime? = birthday
 
     fun setBirthday(birthday: ZonedDateTime){
         this.birthday = birthday
     }
 
-    override fun toString(): String ="$age,$birthday"
+    override fun toString(): String ="возраст: $age, день рождения: $birthday"
 }

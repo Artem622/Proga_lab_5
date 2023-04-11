@@ -1,13 +1,12 @@
 package proga_lab_5.commands
 
+import proga_lab_5.commands.Result
+
 
 class Sort : Command {
     private val argsInfo = ArgsInfo()
-    override fun comply(variables: HashMap<String, Any>): HashMap<String, Any> {
-        val result : HashMap<String, Any> = HashMap()
-        result["print message"] = true
-        result["message"] = "Коллекция отсортирована."
-        return result
+    override fun comply(variables: HashMap<String, Any>): Result {
+        return Result("коллекция отсортирована", true)
     }
 
     override fun getName(): String {
