@@ -1,11 +1,36 @@
 package proga_lab_5.commands
 
-import proga_lab_5.commands.Result
+import proga_lab_5.collection
+import proga_lab_5.commands.tools.*
+import proga_lab_5.city.arrayFreeId
 
+object Str {
+    const val field = "field"
+    const val arg = "arg"
+}
 
 class RemoveLower : Command {
     private val argsInfo = ArgsInfo()
+    private val checkField = CheckField()
+    private val checkArg = CheckArg()
     override fun comply(variables: HashMap<String, Any>): Result {
+
+        val field = variables[Str.field].toString()
+        val arg = variables[Str.arg].toString()
+
+        val iterator = collection.getCollection().iterator()
+        while (iterator.hasNext()) {
+            val iterCity = iterator.next()
+            if (checkField.removeLower(iterCity, field, arg) == Action.remove) {
+                arrayFreeId = if (arrayFreeId.isNotEmpty()){
+                    arrayFreeId.clone() + iterCity.getId()!!
+                } else{
+                    arrayOf(iterCity.getId()!!)
+                }
+                iterator.remove()
+            }
+        }
+
         return Result("Города, у которых значение указанного поля меньше - удалены.", true)
     }
 
@@ -23,9 +48,9 @@ class RemoveLower : Command {
 
     override fun argContract(arguments: List<String>): HashMap<String, Any> {
         val arg : HashMap<String, Any> = HashMap()
-        arg["field"] = arguments[0]
-        //Нужно прописать парсеры для каждого поля в его тип данных, а потом прокидывать туда "arg". После чего добавлять в HashMap.
-        arg["arg"] = arguments[1]
+        arg[Str.field] = checkField.checkField(arguments[0])
+        arg[Str.arg] = checkArg.checkArg(arguments[0] ,arguments[1])
+
         return arg
     }
 }

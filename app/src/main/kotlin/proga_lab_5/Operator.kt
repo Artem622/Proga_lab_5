@@ -26,7 +26,7 @@ class Operator {
         }
     }
 
-    private fun runCommand(command: String){
+    fun runCommand(command: String){
         val commandAndArguments = command.split(" ")
         val name = commandAndArguments[0]
         val arguments = commandAndArguments.drop(1)

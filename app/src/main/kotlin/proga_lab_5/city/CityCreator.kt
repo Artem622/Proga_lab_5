@@ -7,7 +7,7 @@ import java.time.ZonedDateTime
 class CityCreator {
     fun create(name : String, coordX : Long, coordY : Float, area: Int, population: Long, meters: Long, agl: Double, climate:String, government: String, birthday : ZonedDateTime, age : Int){
         val city = City()
-        city.setId(0)
+        city.setId(collection.getFreeId())
 
         city.setCreationDate(LocalDateTime.now())
 

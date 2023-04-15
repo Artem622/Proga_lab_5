@@ -1,12 +1,18 @@
 package proga_lab_5.commands
 
+import proga_lab_5.city.CityCompareByDefault
 import proga_lab_5.city.CityCreator
+import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
+import proga_lab_5.commands.tools.VarsShaper
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 object Var{
+    const val id = "id"
     const val name = "name"
     const val coordinateX = "coordX"
     const val coordinateY = "coordY"
@@ -18,6 +24,13 @@ object Var{
     const val government = "government"
     const val birthday = "birthday"
     const val age = "age"
+    const val index = "index"
+    const val allFields = "all fields"
+    const val numberOfFields = "number of fields"
+    const val wayToFile = "Way to File"
+    const val True = "True"
+    const val False = "False"
+    const val numbersOfId = "numbers of id"
 }
 
 
@@ -45,6 +58,11 @@ class Add : Command {
         val birthday = ZonedDateTime.parse(birt.toString())
         val age = variables[Var.age].toString().toInt()
         creator.create(name, coordX, coordY, area, population, meters, agl, climate, government, birthday, age)
+
+        val c = CityCompareByDefault()
+        val cl = collection.getCollection()
+
+        cl.sortWith(c)
 
         return Result("Город добавлен в коллекцию", true)
     }

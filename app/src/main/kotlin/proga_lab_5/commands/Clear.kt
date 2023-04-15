@@ -1,9 +1,9 @@
 package proga_lab_5.commands
 
-import proga_lab_5.Strings
-import proga_lab_5.city.City
-import proga_lab_5.city.CityCollection
 import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
+
 object Keys {
     const val print = "print message"
     const val message = "message"

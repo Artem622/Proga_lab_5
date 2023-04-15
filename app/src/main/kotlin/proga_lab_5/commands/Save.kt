@@ -1,5 +1,8 @@
 package proga_lab_5.commands
 
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
+
 
 class Save : Command {
     private val argsInfo = ArgsInfo()

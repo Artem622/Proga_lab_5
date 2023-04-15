@@ -3,6 +3,8 @@ package proga_lab_5.commands
 import proga_lab_5.city.City
 
 import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
 import proga_lab_5.uPrinter
 
 

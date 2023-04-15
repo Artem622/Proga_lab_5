@@ -17,6 +17,7 @@ class City {
     private var government: Government? =null
     private var governor: Human? = Human()
 
+
     override fun toString(): String {
         val formatted = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
         val str = StringBuilder()
@@ -39,15 +40,15 @@ class City {
         this.coordinates = coordinates
     }
 
-    fun getCoordinatesX(): String? {
-        return coordinates!!.getX().toString()
+    fun getCoordinatesX(): Long{
+        return coordinates!!.getX()
     }
     fun setCoordinatesX(x: Long) {
         coordinates!!.setX(x)
     }
 
-    fun getCoordinatesY(): String? {
-        return coordinates!!.getY().toString()
+    fun getCoordinatesY(): Float {
+        return coordinates!!.getY()
     }
     fun setCoordinatesY(y: Float) {
         coordinates!!.setY(y)
@@ -108,10 +109,11 @@ class City {
         this.area = area
     }
 
-    fun getPopulation(): Long?= population
+    fun getPopulation(): Long? = population
     fun setPopulation(population: Long) {
         this.population = population
     }
+
 
 
 }

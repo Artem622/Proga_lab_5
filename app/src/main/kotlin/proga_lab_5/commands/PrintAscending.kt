@@ -1,12 +1,17 @@
 package proga_lab_5.commands
 
-import proga_lab_5.commands.Result
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
 
 
 class PrintAscending : Command {
     private val argsInfo = ArgsInfo()
+    private val sort = Sort()
+    private val show = Show()
     override fun comply(variables: HashMap<String, Any>): Result {
 
+        sort.comply(HashMap())
+        show.comply(HashMap())
 
 
         return Result("Команда выполнена успешно.", false)

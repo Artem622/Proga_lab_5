@@ -1,12 +1,21 @@
 package proga_lab_5.commands
 
-import proga_lab_5.commands.Result
+import proga_lab_5.city.CityComparator
+import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
 
 
 class Sort : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {
-        return Result("коллекция отсортирована", true)
+
+        val c = CityComparator()
+        val cl = collection.getCollection()
+
+        cl.sortWith(c)
+
+        return Result("Коллекция отсортирована", true)
     }
 
     override fun getName(): String {

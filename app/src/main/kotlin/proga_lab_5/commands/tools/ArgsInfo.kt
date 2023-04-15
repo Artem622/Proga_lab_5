@@ -1,4 +1,4 @@
-package proga_lab_5.commands
+package proga_lab_5.commands.tools
 
 
 class ArgsInfo {

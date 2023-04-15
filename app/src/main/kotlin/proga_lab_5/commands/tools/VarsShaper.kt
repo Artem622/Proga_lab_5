@@ -1,9 +1,10 @@
-package proga_lab_5.commands
+package proga_lab_5.commands.tools
 
 
 
 import proga_lab_5.city.Climate
 import proga_lab_5.city.Government
+import proga_lab_5.commands.Var
 import proga_lab_5.sc
 import proga_lab_5.uPrinter
 import java.time.LocalDate
@@ -38,30 +39,39 @@ class VarsShaper {
         variables[Var.name] = setName()
         variables[Var.coordinateX] = setCoordX()
         variables[Var.coordinateY] = setCoordY()
-        variables[Var.area] = setArea()
+        variables[Var.area] = setAreaAndAge(Var.area)
         variables[Var.population] = setPopulation()
         variables[Var.meters] = setMeters()
         variables[Var.agl] = setAgl()
         variables[Var.climate] = setClimate()
         variables[Var.government] = setGovernment()
-        variables[Var.age] = setAge()
+        variables[Var.age] = setAreaAndAge(Var.age)
         variables[Var.birthday] = setBirthday()
 
 
         return variables
     }
-    private fun setName():String{
+    fun setName():String{
         uPrinter.print { Messages.setName }
         val name = sc.nextLine()
-        return if (name.equals("") || name.equals(null) || name.equals("null")) {
-            uPrinter.print { Messages.errorName }
-            this.setName()
-        } else {
+        return if (checkName(name)) {
             return name
+        } else {
+            this.setName()
         }
     }
 
-     private fun setCoordY(): Float {
+    fun checkName(name : String) : Boolean{
+        return if (name == "" || name.equals(null) || name == "null") {
+            uPrinter.print { Messages.errorName }
+            this.setName()
+            false
+        } else {
+            true
+        }
+    }
+
+    fun setCoordY(): Float {
         uPrinter.print { Messages.setCoordY }
         val y = sc.nextLine()
          return if (checkCoordY(y)) {
@@ -71,7 +81,7 @@ class VarsShaper {
          }
     }
 
-    private fun checkCoordY(y : String) : Boolean{
+     fun checkCoordY(y : String) : Boolean{
         return try {
             y.toFloat()
             true
@@ -81,17 +91,17 @@ class VarsShaper {
         }
     }
 
-    private fun setCoordX():Long {
+    fun setCoordX():Long {
         uPrinter.print { Messages.setCoordX }
         val x = sc.nextLine()
         return if (checkCoordX(x)) {
-            return x.toLong()
+            x.toLong()
         } else {
             this.setCoordX()
         }
     }
 
-    private fun checkCoordX(x : String): Boolean{
+    fun checkCoordX(x : String): Boolean{
         return try {
             x.toLong()
             true
@@ -100,16 +110,20 @@ class VarsShaper {
             false
         }
     }
-    private fun setArea(): Int{
+    fun setAreaAndAge(filed : String): Int{
+        if (filed == Var.area){
         uPrinter.print { Messages.setArea }
+        } else{
+            uPrinter.print { Messages.setAge }
+        }
         val area = sc.nextLine()
-        return if (checkArea(area)) {
+        return if (checkAreaAndAge(area)) {
             area.toInt()
         } else {
-            this.setArea()
+            this.setAreaAndAge(filed)
         }
     }
-    private fun checkArea(area : String): Boolean{
+    fun checkAreaAndAge(area : String): Boolean{
         return try {
             area.toInt()
             if (area.toInt() < 0){
@@ -123,7 +137,7 @@ class VarsShaper {
         }
     }
 
-    private fun setPopulation():Long{
+    fun setPopulation():Long{
         uPrinter.print { Messages.setPopulation }
         val population = sc.nextLine()
         return if (checkPopulation(population)) {
@@ -133,7 +147,7 @@ class VarsShaper {
         }
     }
 
-    private fun checkPopulation(population : String) : Boolean{
+    fun checkPopulation(population : String) : Boolean{
         return try {
             population.toLong()
             if (population.toLong() < 0) {
@@ -147,7 +161,7 @@ class VarsShaper {
         }
     }
 
-    private fun setMeters() : Long{
+    fun setMeters() : Long{
         uPrinter.print { Messages.setMeters }
         val meters = sc.nextLine()
         return if (checkMeters(meters)) {
@@ -158,7 +172,7 @@ class VarsShaper {
 
     }
 
-    private fun checkMeters(meters: String) : Boolean{
+    fun checkMeters(meters: String) : Boolean{
         return try {
             meters.toLong()
             true
@@ -167,7 +181,7 @@ class VarsShaper {
             false
         }
     }
-    private fun setAgl() : Double{
+    fun setAgl() : Double{
         uPrinter.print { Messages.setAgl }
         val agl = sc.nextLine()
         return if (checkAdl(agl)) {
@@ -177,7 +191,7 @@ class VarsShaper {
         }
     }
 
-    private fun checkAdl(agl : String) : Boolean{
+    fun checkAdl(agl : String) : Boolean{
         return try {
             agl.toDouble()
             true
@@ -186,7 +200,7 @@ class VarsShaper {
             false
         }
     }
-    private fun setClimate(): String{
+    fun setClimate(): String{
         uPrinter.print { Messages.setClimate }
         val climate  = sc.nextLine()
         return if (checkClimate(climate)) {
@@ -196,7 +210,7 @@ class VarsShaper {
         }
     }
 
-    private fun checkClimate(climate : String) : Boolean{
+    fun checkClimate(climate : String) : Boolean{
         return try {
             Climate.valueOf(climate.uppercase())
             true
@@ -205,7 +219,7 @@ class VarsShaper {
             false
         }
     }
-    private fun setGovernment(): String{
+    fun setGovernment(): String{
         uPrinter.print { Messages.setGovernment }
         val government = sc.nextLine()
         return if (checkGovernment(government)) {
@@ -213,10 +227,9 @@ class VarsShaper {
         } else {
             setGovernment()
         }
-
     }
 
-    private fun checkGovernment(government : String) : Boolean{
+    fun checkGovernment(government : String) : Boolean{
         return try {
             Government.valueOf(government.uppercase())
             true
@@ -225,30 +238,7 @@ class VarsShaper {
             false
         }
     }
-    private fun setAge() : Int {
-        uPrinter.print { Messages.setAge }
-        val age = sc.nextLine()
-        return if (checkAge(age)) {
-            return age.toInt()
-        } else {
-            this.setAge()
-        }
-    }
-    private fun checkAge(age : String) : Boolean{
-        return try {
-            age.toInt()
-            if (age.toInt() < 0) {
-                uPrinter.print { Messages.errorValue }
-                false
-            } else {
-                true
-            }
-        } catch (e: Exception) {
-            uPrinter.print { Messages.errorValue }
-            false
-        }
-    }
-    private fun setBirthday(): String{
+    fun setBirthday(): String{
         uPrinter.print { Messages.setBirthday }
         val birthday = sc.nextLine()
         return if (checkBirthday(birthday)) {
@@ -257,7 +247,7 @@ class VarsShaper {
             this.setBirthday()
         }
     }
-    private fun checkBirthday(birthday : String) : Boolean{
+    fun checkBirthday(birthday : String) : Boolean{
         return try {
             val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             val date: LocalDate = LocalDate.parse(birthday, formatter)

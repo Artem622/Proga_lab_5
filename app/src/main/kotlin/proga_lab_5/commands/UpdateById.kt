@@ -1,11 +1,35 @@
 package proga_lab_5.commands
 
+import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.CityUpdater
+import proga_lab_5.commands.tools.MoreArgumentsInCommand
+import proga_lab_5.commands.tools.Result
 
 
 class UpdateById : Command {
     private val argsInfo = ArgsInfo()
+    private val updater = CityUpdater()
+    private var detector = false
     override fun comply(variables: HashMap<String, Any>): Result {
-        return Result("Значение полей города обновлены", true)
+        val c = collection.getCollection()
+        var message = "Значение полей города обновлены."
+        if (c.size == 0){
+            message = "Коллекция пуста. Нечего изменять."
+        }else{
+            val iterator = collection.getCollection().iterator()
+            while (!detector && iterator.hasNext()) {
+                val iterCity = iterator.next()
+                if (iterCity.getId() == variables[Var.id].toString().toLong()) {
+                    updater.updateCity(iterCity, variables)
+                    detector = true
+                }
+            }
+            if (!this.detector){
+                message = "Города с таким id не существует."
+            }
+        }
+        return Result(message, true)
     }
 
     override fun getName(): String {
@@ -26,20 +50,17 @@ class UpdateById : Command {
         val firstMap : HashMap<String, Any> = HashMap()
 
         if (arguments.size == 1){
-            firstMap["all fields"] = "True"
+            firstMap[Var.allFields] = Var.True
         }else{
-            firstMap["all fields"] = "False"
+            firstMap[Var.allFields] = Var.False
         }
 
-        firstMap["id"] = arguments[0].toInt()
+        firstMap[Var.id] = arguments[0].toInt()
 
         val fields : List<String> = arguments.drop(1)
 
         val more = MoreArgumentsInCommand()
-        val secondMap = more.moreArguments(fields, "numbers of fields")
-
-        println(firstMap + secondMap)
-
+        val secondMap = more.moreArguments(fields, Var.numberOfFields)
         return (firstMap + secondMap) as HashMap<String, Any>
     }
 }

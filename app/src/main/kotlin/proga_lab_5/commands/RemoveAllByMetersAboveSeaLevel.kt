@@ -1,7 +1,9 @@
 package proga_lab_5.commands
 
-import proga_lab_5.city.CityCollection
+import proga_lab_5.city.arrayFreeId
 import proga_lab_5.collection
+import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.Result
 
 
 class RemoveAllByMetersAboveSeaLevel: Command {
@@ -13,6 +15,11 @@ class RemoveAllByMetersAboveSeaLevel: Command {
            while (iterator.hasNext()) {
                val iterCity = iterator.next()
                if (iterCity.getMetersAboveSeaLevel() == variables[Var.meters]) {
+                   arrayFreeId = if (arrayFreeId.isNotEmpty()){
+                       arrayFreeId.clone() + iterCity.getId()!!
+                   } else{
+                       arrayOf(iterCity.getId()!!)
+                   }
                    iterator.remove()
                }
            }
