@@ -6,6 +6,11 @@ import proga_lab_5.commands.tools.ArgsInfo
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Remove all by meters above sea level
+ *
+ * @constructor Create empty Remove all by meters above sea level
+ */
 class RemoveAllByMetersAboveSeaLevel: Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {

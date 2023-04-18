@@ -9,6 +9,11 @@ object Str {
     const val arg = "arg"
 }
 
+/**
+ * Remove lower
+ *
+ * @constructor Create empty Remove lower
+ */
 class RemoveLower : Command {
     private val argsInfo = ArgsInfo()
     private val checkField = CheckField()

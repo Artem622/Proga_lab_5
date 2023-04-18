@@ -23,10 +23,21 @@ object Numbers {
     const val eleven = "11"
 }
 
+/**
+ * City updater
+ *
+ * @constructor Create empty City updater
+ */
 class CityUpdater {
 
     private var varsShaper = VarsShaper()
 
+    /**
+     * Update city
+     *
+     * @param city
+     * @param arguments
+     */
     fun updateCity(city : City, arguments : HashMap<String, Any>) =
         if (arguments[Var.allFields] == "True" || arguments[Var.numberOfFields] == Numbers.eleven){
             fullUpdate(city)

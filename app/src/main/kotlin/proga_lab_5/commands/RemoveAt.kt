@@ -7,6 +7,11 @@ import proga_lab_5.commands.tools.CheckArg
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Remove at
+ *
+ * @constructor Create empty Remove at
+ */
 class RemoveAt : Command {
     private val argsInfo = ArgsInfo()
     private val checkArg = CheckArg()

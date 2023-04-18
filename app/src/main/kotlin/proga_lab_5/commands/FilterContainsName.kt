@@ -8,6 +8,11 @@ import proga_lab_5.commands.tools.Result
 import proga_lab_5.uPrinter
 
 
+/**
+ * Filter contains name
+ *
+ * @constructor Create empty Filter contains name
+ */
 class FilterContainsName : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {

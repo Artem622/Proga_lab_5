@@ -34,6 +34,11 @@ object Var{
 }
 
 
+/**
+ * Add
+ *
+ * @constructor Create empty Add
+ */
 class Add : Command {
     private val shaper = VarsShaper()
     private val argsInfo = ArgsInfo()

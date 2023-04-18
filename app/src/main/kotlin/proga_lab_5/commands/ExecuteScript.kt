@@ -10,6 +10,11 @@ import java.io.FileReader
 import java.util.*
 import kotlin.collections.HashMap
 
+/**
+ * Execute script
+ *
+ * @constructor Create empty Execute script
+ */
 class ExecuteScript: Command{
 
     private val argsInfo = ArgsInfo()

@@ -7,6 +7,11 @@ import proga_lab_5.uPrinter
 import java.util.*
 
 
+/**
+ * Show
+ *
+ * @constructor Create empty Show
+ */
 class Show : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {

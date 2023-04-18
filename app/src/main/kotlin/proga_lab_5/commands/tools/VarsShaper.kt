@@ -7,10 +7,12 @@ import proga_lab_5.city.Government
 import proga_lab_5.commands.Var
 import proga_lab_5.sc
 import proga_lab_5.uPrinter
+import java.io.IOException
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 
 object Messages{
@@ -32,8 +34,19 @@ object Messages{
     const val setBirthday = "Укажите день рождения губернатора в формате DD/MM/YYYY:"
 
 }
+
+/**
+ * Vars shaper
+ *
+ * @constructor Create empty Vars shaper
+ */
 class VarsShaper {
 
+    /**
+     * Shape
+     *
+     * @return
+     */
     fun shape():HashMap<String, Any>{
         val variables = HashMap<String, Any>()
         variables[Var.name] = setName()
@@ -51,6 +64,12 @@ class VarsShaper {
 
         return variables
     }
+
+    /**
+     * Set name
+     *
+     * @return
+     */
     fun setName():String{
         uPrinter.print { Messages.setName }
         val name = sc.nextLine()
@@ -61,6 +80,12 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check name
+     *
+     * @param name
+     * @return
+     */
     fun checkName(name : String) : Boolean{
         return if (name == "" || name.equals(null) || name == "null") {
             uPrinter.print { Messages.errorName }
@@ -71,6 +96,11 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Set coord y
+     *
+     * @return
+     */
     fun setCoordY(): Float {
         uPrinter.print { Messages.setCoordY }
         val y = sc.nextLine()
@@ -81,7 +111,13 @@ class VarsShaper {
          }
     }
 
-     fun checkCoordY(y : String) : Boolean{
+    /**
+     * Check coord y
+     *
+     * @param y
+     * @return
+     */
+    fun checkCoordY(y : String) : Boolean{
         return try {
             y.toFloat()
             true
@@ -91,6 +127,11 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Set coord x
+     *
+     * @return
+     */
     fun setCoordX():Long {
         uPrinter.print { Messages.setCoordX }
         val x = sc.nextLine()
@@ -101,6 +142,12 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check coord x
+     *
+     * @param x
+     * @return
+     */
     fun checkCoordX(x : String): Boolean{
         return try {
             x.toLong()
@@ -110,6 +157,13 @@ class VarsShaper {
             false
         }
     }
+
+    /**
+     * Set area and age
+     *
+     * @param filed
+     * @return
+     */
     fun setAreaAndAge(filed : String): Int{
         if (filed == Var.area){
         uPrinter.print { Messages.setArea }
@@ -123,6 +177,13 @@ class VarsShaper {
             this.setAreaAndAge(filed)
         }
     }
+
+    /**
+     * Check area and age
+     *
+     * @param area
+     * @return
+     */
     fun checkAreaAndAge(area : String): Boolean{
         return try {
             area.toInt()
@@ -137,6 +198,11 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Set population
+     *
+     * @return
+     */
     fun setPopulation():Long{
         uPrinter.print { Messages.setPopulation }
         val population = sc.nextLine()
@@ -147,6 +213,12 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check population
+     *
+     * @param population
+     * @return
+     */
     fun checkPopulation(population : String) : Boolean{
         return try {
             population.toLong()
@@ -161,6 +233,11 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Set meters
+     *
+     * @return
+     */
     fun setMeters() : Long{
         uPrinter.print { Messages.setMeters }
         val meters = sc.nextLine()
@@ -172,6 +249,12 @@ class VarsShaper {
 
     }
 
+    /**
+     * Check meters
+     *
+     * @param meters
+     * @return
+     */
     fun checkMeters(meters: String) : Boolean{
         return try {
             meters.toLong()
@@ -181,6 +264,12 @@ class VarsShaper {
             false
         }
     }
+
+    /**
+     * Set agl
+     *
+     * @return
+     */
     fun setAgl() : Double{
         uPrinter.print { Messages.setAgl }
         val agl = sc.nextLine()
@@ -191,6 +280,12 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check adl
+     *
+     * @param agl
+     * @return
+     */
     fun checkAdl(agl : String) : Boolean{
         return try {
             agl.toDouble()
@@ -200,6 +295,12 @@ class VarsShaper {
             false
         }
     }
+
+    /**
+     * Set climate
+     *
+     * @return
+     */
     fun setClimate(): String{
         uPrinter.print { Messages.setClimate }
         val climate  = sc.nextLine()
@@ -210,6 +311,12 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check climate
+     *
+     * @param climate
+     * @return
+     */
     fun checkClimate(climate : String) : Boolean{
         return try {
             Climate.valueOf(climate.uppercase())
@@ -219,6 +326,12 @@ class VarsShaper {
             false
         }
     }
+
+    /**
+     * Set government
+     *
+     * @return
+     */
     fun setGovernment(): String{
         uPrinter.print { Messages.setGovernment }
         val government = sc.nextLine()
@@ -229,15 +342,27 @@ class VarsShaper {
         }
     }
 
+    /**
+     * Check government
+     *
+     * @param government
+     * @return
+     */
     fun checkGovernment(government : String) : Boolean{
         return try {
             Government.valueOf(government.uppercase())
             true
-        } catch (e: Exception) {
+        } catch (e: java.lang.IllegalArgumentException) {
             uPrinter.print { Messages.errorValue }
             false
         }
     }
+
+    /**
+     * Set birthday
+     *
+     * @return
+     */
     fun setBirthday(): String{
         uPrinter.print { Messages.setBirthday }
         val birthday = sc.nextLine()
@@ -247,15 +372,24 @@ class VarsShaper {
             this.setBirthday()
         }
     }
+
+    /**
+     * Check birthday
+     *
+     * @param birthday
+     * @return
+     */
     fun checkBirthday(birthday : String) : Boolean{
         return try {
             val formatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             val date: LocalDate = LocalDate.parse(birthday, formatter)
             val result: ZonedDateTime = date.atStartOfDay(ZoneId.systemDefault())
             true
-        } catch (e: Exception) {
+        } catch (e: java.time.format.DateTimeParseException) {
             uPrinter.print { Messages.errorValue }
             false
+
+
         }
     }
 }

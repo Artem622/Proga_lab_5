@@ -6,6 +6,11 @@ import proga_lab_5.commands.tools.Result
 import proga_lab_5.uPrinter
 
 
+/**
+ * Info
+ *
+ * @constructor Create empty Info
+ */
 class Info : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {

@@ -10,6 +10,11 @@ object Action{
     const val stay = "stay"
 }
 
+/**
+ * Check field
+ *
+ * @constructor Create empty Check field
+ */
 class CheckField {
     private fun setField(field : String) : String{
         return when (field) {
@@ -28,6 +33,13 @@ class CheckField {
             }
         }
     }
+
+    /**
+     * Check field
+     *
+     * @param field
+     * @return
+     */
     fun checkField(field : String) : String {
         return if (setField(field) == "error") {
             val newField = sc.nextLine()
@@ -36,6 +48,15 @@ class CheckField {
             return setField(field)
         }
     }
+
+    /**
+     * Remove lower
+     *
+     * @param city
+     * @param field
+     * @param arg
+     * @return
+     */
     fun removeLower(city : City, field : String, arg : String) : String{
         when (field) {
             Var.id -> {

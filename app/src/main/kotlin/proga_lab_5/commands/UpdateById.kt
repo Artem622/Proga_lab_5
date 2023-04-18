@@ -7,6 +7,11 @@ import proga_lab_5.commands.tools.MoreArgumentsInCommand
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Update by id
+ *
+ * @constructor Create empty Update by id
+ */
 class UpdateById : Command {
     private val argsInfo = ArgsInfo()
     private val updater = CityUpdater()

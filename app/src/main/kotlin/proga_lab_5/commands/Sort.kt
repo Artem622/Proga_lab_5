@@ -6,6 +6,11 @@ import proga_lab_5.commands.tools.ArgsInfo
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Sort
+ *
+ * @constructor Create empty Sort
+ */
 class Sort : Command {
     private val argsInfo = ArgsInfo()
     override fun comply(variables: HashMap<String, Any>): Result {

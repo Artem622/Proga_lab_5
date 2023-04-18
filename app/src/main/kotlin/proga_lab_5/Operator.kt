@@ -1,5 +1,6 @@
 package proga_lab_5
 
+import proga_lab_5.commands.Load
 import java.util.*
 
 object Strings {
@@ -8,16 +9,28 @@ object Strings {
 }
 
 var sc = Scanner(System.`in`)
+
+/**
+ * Operator
+ *
+ * @constructor Create empty Operator
+ */
 class Operator {
 
 
-
+    /**
+     * Process
+     *
+     */
     fun process(){
 
         uPrinter.print { Strings.START_STRING }
 
-        val file = sc.nextLine()
+        val wayToFile  = sc.nextLine()
 
+        val firstCommand = "load $wayToFile"
+
+        runCommand(firstCommand)
         //Написать код для загрузки данных из файла в коллекцию
 
         while (true){
@@ -26,6 +39,11 @@ class Operator {
         }
     }
 
+    /**
+     * Run command
+     *
+     * @param command
+     */
     fun runCommand(command: String){
         val commandAndArguments = command.split(" ")
         val name = commandAndArguments[0]

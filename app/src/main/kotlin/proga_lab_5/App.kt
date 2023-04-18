@@ -12,10 +12,15 @@ val collection = CityCollection()
 val operator = Operator()
 val commandManager = CommandManager()
 val uPrinter = UPrinter()
+
+/**
+ * Main
+ *
+ */
 fun main() {
 
     commandManager.register(Exit(), Help(), Info(), Show(), Save(), Sort() ,ExecuteScript(), PrintAscending(), FilterContainsName(), Clear(),
-        RemoveAllByMetersAboveSeaLevel(), RemoveById(), RemoveLower(), RemoveAt(), UpdateById(), Add())
+        RemoveAllByMetersAboveSeaLevel(), RemoveById(), RemoveLower(), RemoveAt(), UpdateById(), Add(), Load())
 
     operator.process()
 

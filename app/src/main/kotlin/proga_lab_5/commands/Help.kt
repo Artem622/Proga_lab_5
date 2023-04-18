@@ -7,6 +7,11 @@ import proga_lab_5.commands.tools.Result
 import proga_lab_5.printers.UPrinter
 
 
+/**
+ * Help
+ *
+ * @constructor Create empty Help
+ */
 class Help : Command{
     private val argsInfo = ArgsInfo()
     private val printer = UPrinter()

@@ -10,6 +10,11 @@ object Message {
     const val MESSAGE = "Приложение завершает свою работу..."
 }
 
+/**
+ * Exit
+ *
+ * @constructor Create empty Exit
+ */
 class Exit : Command {
     private val printer = UPrinter()
     private val argsInfo = ArgsInfo()

@@ -4,6 +4,11 @@ import proga_lab_5.commands.Var
 import proga_lab_5.sc
 import proga_lab_5.uPrinter
 
+/**
+ * Check arg
+ *
+ * @constructor Create empty Check arg
+ */
 class CheckArg {
     private val varShaper = VarsShaper()
     private fun setArg(field: String, arg: String) : Boolean{
@@ -27,6 +32,14 @@ class CheckArg {
             else -> varShaper.checkName(arg)
         }
     }
+
+    /**
+     * Check arg
+     *
+     * @param field
+     * @param arg
+     * @return
+     */
     fun checkArg(field: String, arg:String):String{
         return if (!setArg(field, arg)){
             uPrinter.print { "Указанное значение не удовлетворяет условиям поля, введите значение повторно." }

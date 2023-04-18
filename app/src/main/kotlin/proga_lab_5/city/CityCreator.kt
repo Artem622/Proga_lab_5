@@ -4,7 +4,27 @@ import proga_lab_5.collection
 import java.time.LocalDateTime
 import java.time.ZonedDateTime
 
+/**
+ * City creator
+ *
+ * @constructor Create empty City creator
+ */
 class CityCreator {
+    /**
+     * Create
+     *
+     * @param name
+     * @param coordX
+     * @param coordY
+     * @param area
+     * @param population
+     * @param meters
+     * @param agl
+     * @param climate
+     * @param government
+     * @param birthday
+     * @param age
+     */
     fun create(name : String, coordX : Long, coordY : Float, area: Int, population: Long, meters: Long, agl: Double, climate:String, government: String, birthday : ZonedDateTime, age : Int){
         val city = City()
         city.setId(collection.getFreeId())

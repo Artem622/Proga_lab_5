@@ -1,12 +1,20 @@
 package proga_lab_5.commands
 
 import proga_lab_5.commands.tools.ArgsInfo
+import proga_lab_5.commands.tools.ParseToSave
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Save
+ *
+ * @constructor Create empty Save
+ */
 class Save : Command {
     private val argsInfo = ArgsInfo()
+    private val parseToSave = ParseToSave()
     override fun comply(variables: HashMap<String, Any>): Result {
+        parseToSave.save()
         return Result("Коллекция сохранена в файл", true)
     }
 

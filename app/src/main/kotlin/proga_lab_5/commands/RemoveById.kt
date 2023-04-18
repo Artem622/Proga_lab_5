@@ -7,6 +7,12 @@ import proga_lab_5.commands.tools.MoreArgumentsInCommand
 import proga_lab_5.commands.tools.Result
 
 private var arrayOfId = emptyArray<Long>()
+
+/**
+ * Remove by id
+ *
+ * @constructor Create empty Remove by id
+ */
 class RemoveById : Command {
     private val argsInfo = ArgsInfo()
     private val c = collection.getCollection()

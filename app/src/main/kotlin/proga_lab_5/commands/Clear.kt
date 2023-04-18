@@ -4,10 +4,11 @@ import proga_lab_5.collection
 import proga_lab_5.commands.tools.ArgsInfo
 import proga_lab_5.commands.tools.Result
 
-object Keys {
-    const val print = "print message"
-    const val message = "message"
-}
+/**
+ * Clear
+ *
+ * @constructor Create empty Clear
+ */
 class Clear : Command {
 
     private val argsInfo = ArgsInfo()
@@ -16,7 +17,7 @@ class Clear : Command {
         val cityCollection = collection.getCollection()
         cityCollection.clear()
 
-        return Result("Коллекция очищена", true)
+        return Result("Коллекция очищена.", true)
     }
 
     override fun getName(): String {

@@ -4,6 +4,11 @@ import proga_lab_5.commands.tools.ArgsInfo
 import proga_lab_5.commands.tools.Result
 
 
+/**
+ * Print ascending
+ *
+ * @constructor Create empty Print ascending
+ */
 class PrintAscending : Command {
     private val argsInfo = ArgsInfo()
     private val sort = Sort()
