@@ -1,0 +1,27 @@
+<?xml version="1.0"?
+<City>
+	<name>Мск</name>
+	<coordinateX>123</coordinateX>
+	<coordinateY>123.0</coordinateY>
+	<area>123456</area>
+	<population>123456</population>
+	<meters>12</meters>
+	<agl>14.0</agl>
+	<climate>STEPPE</climate>
+	<government>JUNTA</government>
+	<age>19</age>
+	<birthday>2004-02-28T00:00+03:00[Europe/Moscow]</birthday>
+	</City>
+<City>
+	<name>Спб</name>
+	<coordinateX>123</coordinateX>
+	<coordinateY>123.0</coordinateY>
+	<area>123456</area>
+	<population>123456</population>
+	<meters>12</meters>
+	<agl>14.0</agl>
+	<climate>STEPPE</climate>
+	<government>JUNTA</government>
+	<age>19</age>
+	<birthday>2004-02-28T00:00+03:00[Europe/Moscow]</birthday>
+	</City>
